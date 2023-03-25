@@ -17,7 +17,7 @@ function Layout() {
 
   const [editMode, setEditMode] = useState(false);
   const [currentNote, setCurrentNote] = useState(-1);
-  const [user, setUser] = useState("fariamobeen124@gmail.com"); // this is an example. change
+  const [user, setUser] = useState("macaylakonig@gmail.com"); // this is an example. change
   const [notes, setNotes] = useState([]);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -46,7 +46,7 @@ function Layout() {
 
       if (user) {
       const accessToken = localStorage.getItem("accessToken");
-        const promise = await fetch(`https://argy4opc7wb7bt2bdoyegonabi0oacwv.lambda-url.ca-central-1.on.aws?email=${user}&id=${accessToken}`)
+        const promise = await fetch(`https://q2k5eqjr5xncq5bijc6mf452jy0mnsns.lambda-url.ca-central-1.on.aws?email=${user}&id=${accessToken}`)
         if (promise.status === 200) {
           const notes = await promise.json();
           setNotes(notes);
@@ -97,7 +97,7 @@ function Layout() {
     const newNote = { title: note.title, body: note.body, when:note.when, id: note.id };
 
 
-    const res = await fetch("https://toojvt36ee7knwaah6a27ljqs40guplo.lambda-url.ca-central-1.on.aws",
+    const res = await fetch("https://63v7lrds4uyg6y2ueazrqnbkvq0jnwxv.lambda-url.ca-central-1.on.aws",
     {
       method: "POST",
       headers: {
@@ -122,7 +122,7 @@ function Layout() {
     setCurrentNote(0);
     setEditMode(false);
     // const res = await fetch(
-    //   `https://argy4opc7wb7bt2bdoyegonabi0oacwv.lambda-url.ca-central-1.on.aws=${user}&id=${id}`,
+    //   `https://ieup52xqfaz4typ3iqtydvkgty0fvscg.lambda-url.ca-central-1.on.aws=${user}&id=${id}`,
     //   {
     //     method: "DELETE",
     //   }
