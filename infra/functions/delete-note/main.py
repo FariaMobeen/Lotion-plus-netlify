@@ -1,9 +1,8 @@
-import boto3
 import json
+import boto3
 
 dynamodb = boto3.resource("dynamodb")
-table = dynamodb.Table("notes")
-
+table = dynamodb.Table("lotion-30122680")
 
 def lambda_handler(event, context):
     email = event["queryStringParameters"]["email"]

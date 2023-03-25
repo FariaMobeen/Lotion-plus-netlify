@@ -6,18 +6,18 @@ terraform {
     }
   }
 }
-#comment
+
 # specify the provider region
 provider "aws" {
   region = "ca-central-1"
-  access_key = "AKIAXISWIVKF4LO7WH3P"
-  secret_key = "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"
+  access_key = "AKIAXHPQRW4CRDSNA2W2"
+  secret_key = "mmn0WeL1GcnPx5iB/f1DaBJpjuc5LNQp7YShmEbG"
 }
 
 # the locals block is used to declare constants that
 # you can use throughout your code
 locals {
-  function_name = "save-note"
+  function_name = "save-note-30139868"
   handler_name  = "main.lambda_handler"
   artifact_name = "artifact.zip"
 
@@ -84,7 +84,7 @@ resource "aws_lambda_function" "lambda" {
 
 resource "aws_lambda_function" "get_notes" {
   role             = aws_iam_role.lambda.arn
-  function_name    = "get-notes"
+  function_name    = "get-notes-30139868"
   handler          = local.handler_name
   filename         = local.get_notes_artifact_name
   source_code_hash = data.archive_file.lambda_get_notes.output_base64sha256
@@ -95,7 +95,7 @@ resource "aws_lambda_function" "get_notes" {
 
 resource "aws_lambda_function" "delete_note" {
   role             = aws_iam_role.lambda.arn
-  function_name    = "delete-notes"
+  function_name    = "delete-notes-30139868"
   handler          = local.handler_name
   filename         = local.delete_note_artifact_name
   source_code_hash = data.archive_file.lambda_delete_note.output_base64sha256
@@ -123,7 +123,8 @@ resource "aws_iam_policy" "logs" {
         "dynamodb:Query",
         "dynamodb:DeleteItem"
       ],
-      "Resource": ["arn:aws:logs:::*", "${aws_dynamodb_table.notes.arn}"],
+      "Resource": ["arn:aws:logs:::*",
+"${aws_dynamodb_table.lotion-30122680.arn}"],
       "Effect": "Allow"
     }
   ]
@@ -198,8 +199,8 @@ output "delete_note_lanmda_url" {
 
 
 # read the docs: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/dynamodb_table
-resource "aws_dynamodb_table" "notes" {
-  name         = "notes"
+resource "aws_dynamodb_table" "lotion-30122680" {
+  name         = "lotion-30122680"
   billing_mode = "PROVISIONED"
 
   # up to 8KB read per second (eventually consistent)

@@ -1,12 +1,13 @@
+import json
 import boto3
 from boto3.dynamodb.conditions import Key
-import json
-dynamodb = boto3.resource('dynamodb')
-table = dynamodb.Table('notes')
 
+dynamodb = boto3.resource("dynamodb")
+table = dynamodb.Table("lotion-30122680")
 
-def lambda_handler(event, context):
+def handler(event, context):
     email = event["queryStringParameters"]["email"]
+
     try:
         res = table.query(KeyConditionExpression=Key("email").eq(email))
         return {
@@ -17,8 +18,7 @@ def lambda_handler(event, context):
         print(exp)
         return {
             "statusCode": 500,
-            "body": json.dumps({
-                "message": str(exp)
-            })
-
-        }
+            "body":json.dumps({
+                "message":str(exp)
+        })
+}

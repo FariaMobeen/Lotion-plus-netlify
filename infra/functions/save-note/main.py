@@ -1,27 +1,23 @@
-import json
 import boto3
-dynamodb_resource = boto3.resource("dynamodb")
-table = dynamodb_resource.Table("notes")
+import json
 
+
+dynamodb_resource = boto3.resource("dynamodb")
+table = dynamodb_resource.Table("lotion-30122680")
 
 def lambda_handler(event, context):
-    print()
-    body = json.loads(event["body"])
+    note = json.loads(event["body"])
     try:
-        table.put_item(Item=body)
+        table.put_item(Item=note)
         return {
-            'statusCode': 200,
-            "body": json.dumps({
-            "message": "successfully added note"
-            })
-
-    }
+            "statusCode": 201,
+            "body": "success"
+        }
     except Exception as exp:
-        print("exception: ", exp)
-    return {
-        'statusCode': 500,
-        "body": json.dumps({
-            "message": str(exp)
-        })
-
-    }
+        print(f"exception: {exp}")
+        return{
+            "statusCode": 500,
+            "body": json.dumps({
+                "message": str(exp)
+            })
+        }
