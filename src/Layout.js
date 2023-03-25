@@ -17,7 +17,7 @@ function Layout() {
 
   const [editMode, setEditMode] = useState(false);
   const [currentNote, setCurrentNote] = useState(-1);
-  const [user, setUser] = useState(null); // this is an example. change
+  const [user, setUser] = useState("fariamobeen124@gmail.com"); // this is an example. change
   const [notes, setNotes] = useState([]);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
