@@ -3,7 +3,7 @@ import { Outlet, useNavigate, Link } from "react-router-dom";
 import NoteList from "./NoteList";
 import { v4 as uuidv4 } from "uuid";
 import { currentDate } from "./utils";
-import { logOut } from './App';
+
 const localStorageKey = "lotion-v1";
 
 
@@ -17,7 +17,7 @@ function Layout() {
 
   const [editMode, setEditMode] = useState(false);
   const [currentNote, setCurrentNote] = useState(-1);
-  const [user, setUser] = useState("macaylakonig@gmail.com"); // this is an example. change
+  const [user, setUser] = useState(null); // this is an example. change
   const [notes, setNotes] = useState([]);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
